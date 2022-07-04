@@ -1,0 +1,6 @@
+{% extends "problems/base.html" %}
+{% block content %}
+    {% for problem in problems %}
+        <h2>{{problem.title}}</h2>
+    {% endfor %}
+{% endblock content %}
