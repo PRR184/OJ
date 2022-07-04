@@ -1,5 +1,23 @@
 {% extends "problems/base.html" %}
 {% block content %}
 
-    <h1>Problems List</h1>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Title</th>
+            <th scope="col">Difficulty</th>
+        </tr>
+        </thead>
+        <tbody>
+            {% for problem in problems %}
+                <tr>
+                    <th scope="row">{{problem.id}}</th>
+                    <td><a href="{% url 'problems-details' problem_id=problem.id %}">{{problem.title}}</a></td>
+                    <td>{{problem.difficulty}}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
 {% endblock content %}
