@@ -2,24 +2,14 @@ from http.client import HTTPResponse
 from django.shortcuts import render
 from django.http import HttpResponse
 
-problems = [
-    {
-        'id':1,
-        'title':'Two Sum',
-        'difficulty':'Easy'
-    },
-    {
-        'id':2,
-        'title':'Three Sum',
-        'difficulty':'Medium'
-    }
-]
+from .models import Problem
+
 
 # Create your views here.
 def home(request):
     context = {
         'title': 'Problems',
-        'problems':problems
+        'problems':Problem.objects.all()
     }
     return render(request, 'problems/home.html',context)
 
