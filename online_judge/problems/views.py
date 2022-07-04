@@ -23,9 +23,10 @@ def home(request):
     }
     return render(request, 'problems/home.html',context)
 
-def details(request,question_id):
-    return render(request, 'problems/details.html')
+def details(request,problem_id):
+    return render(request, 'problems/details.html',{"id":problem_id})
 
 def submissions(request):
-    return HttpResponse(f'Submissions Page')
+    return render(request, 'problems/submissions.html')
+
 
