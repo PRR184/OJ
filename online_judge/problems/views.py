@@ -1,6 +1,5 @@
-from http.client import HTTPResponse
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.contrib.auth.decorators import login_required
 
 from .models import Problem
 
@@ -13,9 +12,11 @@ def home(request):
     }
     return render(request, 'problems/home.html',context)
 
+@login_required
 def details(request,problem_id):
     return render(request, 'problems/details.html',{"id":problem_id})
 
+@login_required
 def submissions(request):
     return render(request, 'problems/submissions.html')
 
