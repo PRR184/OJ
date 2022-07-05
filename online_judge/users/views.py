@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib import messages
 from .forms import UserRegisterForm
 from django.contrib.auth.decorators import login_required
+from problems.models import Submission
 
 
 def register(request):
@@ -18,4 +19,5 @@ def register(request):
 
 @login_required
 def profile(request):
-    return render(request, 'users/profile.html')
+    submissions = Submission.objects.all()
+    return render(request, 'users/profile.html',{'submissions': submissions})

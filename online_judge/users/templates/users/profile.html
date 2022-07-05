@@ -1,6 +1,32 @@
 {% extends "problems/base.html" %}
 {% block content %}
     <div class="content-section">
-        Your Profile
+        <div class="media-body">
+            <h2 class="account-heading">{{ user.username }} </h2>
+            <p class="text-secondary">{{ user.email }} </p>
+        </div>
     </div>
+    <h3>Your Submissions</h3>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th scope="col">Problem-Id</th>
+            <th scope="col">Title</th>
+            <th scope="col">Username</th>
+            <th scope="col">Submitted At</th>
+            <th scope="col">Verdict</th>
+        </tr>
+        </thead>
+        <tbody>
+            {% for submission in submissions %}
+                <tr>
+                    <th scope="row">{{submission.problem.id}}</th>
+                    <td><a href="{% url 'problems-details' problem_id=submission.problem.id %}">{{submission.problem.title}}</a></td>
+                    <td>{{submission.user}}</td>
+                    <td>{{submission.submitted_time}}</td>
+                    <td>{{submission.verdict}}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
 {% endblock content %}
