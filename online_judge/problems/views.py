@@ -58,6 +58,7 @@ def details(request,problem_id):
 
 @login_required
 def submissions(request):
-    return render(request, 'problems/submissions.html')
+    submissions = Submission.objects.all()
+    return render(request, 'problems/submissions.html',{'submissions': submissions})
 
 
